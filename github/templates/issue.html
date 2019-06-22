@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>{{.RepoName}}</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .container {
+        margin: 0 2%;
+        padding-top: 2%;
+      }
+
+      .table-bordered {
+        /* border: 1px solid black; */
+      }
+
+      .table-bordered td {
+        border: 1px solid black;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <table class="table-bordered">
+          <tr>
+            <th>Issue Url</th>
+            <th>Labels</th>
+          </tr>
+          {{range .Issues}}
+          <tr>
+            <td>
+              {{.URL}}
+            </td>
+            <td>
+              {{range $index, $label := .Labels}}
+                {{if gt $index 0 }},{{end}}&nbsp;<span style="color: #{{$label.Color}}">{{$label.Name}}</span>
+              {{end}}
+            </td>
+          </tr>
+          {{end}}
+        </table>
+    </div>
+  </body>
+</html>

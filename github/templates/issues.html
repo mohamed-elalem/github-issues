@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <title>Issues</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .container {
+        margin: 0 2%;
+        padding-top: 2%;
+      }
+
+      .table-bordered {
+        /* border: 1px solid black; */
+      }
+
+      .table-bordered td {
+        border: 1px solid black;
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <table class="table-bordered">
+        <tr>
+          <th>Repo</th>
+          <th>Issue count</th>
+        </tr>
+        {{ range $repoName, $issues := . }}
+        <tr>
+          <td><a href="./{{IssuePath $repoName }}/index.html">{{IssuePath $repoName }}</a></td>
+          <td>{{len $issues}}</td>
+        </tr>
+        {{end}}
+      </table>
+    </div>
+  </body>
+</html>
